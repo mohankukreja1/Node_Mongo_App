@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressHbs = require('express-handlebars');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://mohankukreja1:novice123@ds125945.mlab.com:25945/novice_database',{ useNewUrlParser: true }, function(err, db) {
+mongoose.connect('mongodb://localhost:27017/shopping',{ useNewUrlParser: true }, function(err, db) {
     if (err) {
         console.log('Unable to connect to the server. Please start the server. Error:', err);
     } else {

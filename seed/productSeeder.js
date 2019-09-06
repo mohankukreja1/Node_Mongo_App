@@ -21,6 +21,34 @@ mongoose.connect('mongodb://localhost:27017/shopping',{ useNewUrlParser: true },
                 price: 12
         
             }),
+            new product({
+                imagePath: 'images/mw3.jpeg',
+                title: 'Modern Warfare 3',
+                description : 'First Player shooting game',
+                price: 12
+        
+            }),
+            new product({
+                imagePath: 'images/blur.jpeg',
+                title: 'Blur',
+                description : 'Racing game',
+                price: 12
+        
+            }),
+            new product({
+                imagePath: 'images/cs.jpeg',
+                title: 'Counter strike',
+                description : 'Online Game',
+                price: 12
+        
+            }),
+            new product({
+                imagePath: 'images/tekken.jpeg',
+                title: 'Tekken',
+                description : 'fighting game',
+                price: 12
+        
+            })
         
         ];
         var done = 0;
