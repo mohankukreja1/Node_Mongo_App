@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var product = require('../models/product');
 
+var csrf = require('csurf');
+
+var csrfProtect = csrf();
+router.use(csrfProtect);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -25,5 +29,13 @@ router.get('/', function(req, res, next) {
   });
   //console.log(items);
 });
+
+router.get('/user/signup', function(req,res,next){
+    res.render('user/signup', {csrfToken : req.csrfToken()});
+})
+
+router.post('/user/signup', function(req,res,next){
+  res.redirect('/');
+})
 
 module.exports = router;
