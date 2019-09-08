@@ -41,3 +41,25 @@ passport.serializeUser(function(user, done) {
       });
   }
 ));
+
+passport.use('local-signin',new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+  },
+  function(req,email, password, done) {
+    //console.log(req);
+    User.findOne({ 'email': email }, function(err, user) {
+        console.log(user);
+        if (err) { return done(err);}
+        if (!user) {
+            //console.log(user);
+          return done(null, false, { message: 'No user found' });
+        }
+        if(!user.validPassword(password)){
+            return done(null, false, { message: 'Invalid Password' });
+        };
+        return done(null,user);
+      });
+  }
+));

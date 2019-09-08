@@ -35,9 +35,18 @@ router.get('/user/signup', function(req,res,next){
     res.render('user/signup', {csrfToken : req.csrfToken()});
 })
 
+router.get('/user/signin', function(req,res,next){
+  res.render('user/signin', {csrfToken : req.csrfToken()});
+})
+router.post('/user/signin',  passport.authenticate('local-signin', { successRedirect: '/user/profile',
+  failureRedirect: '/user/signin',
+  failureFlash: true })
+)
+
+
 router.post('/user/signup',  passport.authenticate('local-signup', { successRedirect: '/user/profile',
-failureRedirect: '/',
-failureFlash: true })
+  failureRedirect: '/user/signup',
+  failureFlash: true })
 )
 
 router.get('/user/profile',function(req,res,next){
