@@ -1,15 +1,21 @@
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Brand</a>
+    <a class="nav-link active" href="/">Brand</a>
   </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">User Managment</a>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
+      {{# if login}}
+        <a class="dropdown-item" href="/user/profile">User Account</a>
+        <a class="dropdown-item" href="/user/logout">logout</a>
+        
+      
+      {{else}}
+          <a class="dropdown-item" href="/user/signup">signup</a>
+          <a class="dropdown-item" href="/user/signin">signin</a>
+      {{/if}}
+      
+      
     </div>
   </li>
   <li class="nav-item">

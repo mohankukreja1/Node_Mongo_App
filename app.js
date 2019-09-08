@@ -21,9 +21,10 @@ mongoose.connect('mongodb://localhost:27017/shopping',{ useNewUrlParser: true },
 });
 var app = express();
 require('./config/passport');
-    
+
     
 var index = require('./routes/index');
+var userRoute = require('./routes/user');
 
 
 
@@ -43,7 +44,12 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(function(req,res,next){
+  res.locals.login = req.user;
+  next();
+})
+    
+app.use('/user',userRoute);
 app.use('/', index);
 
 
