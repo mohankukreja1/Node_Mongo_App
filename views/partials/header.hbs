@@ -19,7 +19,11 @@
     </div>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Shopping Cart</a>
+    <div> 
+      <span class="badge">{{session.cart.totalQty}}</span>
+      <a class="nav-link" href="/shopping-cart">Shopping Cart</a>
+    </div>
+    
   </li>
   
 </ul>
